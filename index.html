@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div
+        class="blue padding flex align-right"
+        onclick="createList(event)"
+        id="div-1"
+      >
+        <span class="text">x</span>
+        <span>1</span>
+      </div>
+      <div class="flex main">
+        <div
+          class="green padding align-right vertical-align-center flex-grow-1"
+          onclick="createList(event)"
+          id="div-2"
+        >
+          <span>2</span>
+        </div>
+        <div class="flex-grow-3">
+          <div class="flex content">
+            <div
+              class="align-center vertical-align-center flex-grow-2"
+              id="div-3"
+              onclick="createList(event)"
+            >
+              <span>3</span>
+              <span>Triangle square</span>
+              <div id="div-3-end"></div>
+
+              <span>Minimum of ten numbers</span>
+              <input type="text" id="div-3-input" value="1 2 3 4 5 6 7 8 9 1" />
+              <button onclick="calculateMin()">Calculate</button>
+              
+              <span>Color</span>
+              <input type="text" id="div-3-color-input" value="red" />
+              <button onclick="setColor()">Set Color</button>
+            </div>
+            <div class="flex-grow-1">
+              <div
+                class="green padding vertical-align-center aside-part"
+                id="div-4"
+                onclick="createList(event)"
+              >
+                <span>4</span>
+              </div>
+              <div
+                class="orange padding vertical-align-center aside-part"
+                id="div-5"
+                onclick="createList(event)"
+              >
+                <span>5</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="blue flex align-right padding"
+            onclick="createList(event)"
+            id="div-6"
+          >
+            <span class="text">y</span>
+            <span>6</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript" src="script.js"></script>
+</html>
