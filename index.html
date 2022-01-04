@@ -28,17 +28,38 @@
               id="div-3"
               onclick="createList(event)"
             >
-              <span>3</span>
-              <span>Triangle square</span>
-              <div id="div-3-end"></div>
+              <div>
+                <span>a</span>
+                <input type="text" id="triangle-a" />
+              </div>
 
-              <span>Minimum of ten numbers</span>
-              <input type="text" id="div-3-input" value="1 2 3 4 5 6 7 8 9 1" />
-              <button onclick="calculateMin()">Calculate</button>
-              
-              <span>Color</span>
-              <input type="text" id="div-3-color-input" value="red" />
-              <button onclick="setColor()">Set Color</button>
+              <div>
+                <span>b</span>
+                <input type="text" id="triangle-b" />
+              </div>
+
+              <div>
+                <span>c</span>
+                <input type="text" id="triangle-c" />
+              </div>
+
+              <div>
+                <div id="square">Triangle square:</div>
+                <button onclick="calculateSquare(event)">Calculate square</button>
+              </div>
+
+              <div>
+                <span>Minimum of ten numbers</span>
+                <input type="text" id="min-input" />
+                <button onclick="calculateMin(event)">Calculate</button>
+              </div>
+              <div style="height: auto"></div>
+
+              <div>
+                <span>Text color</span>
+                <input type="text" id="color-input" />
+                <button onclick="setColor(event)">Set Color</button>
+              </div>
             </div>
             <div class="flex-grow-1">
               <div

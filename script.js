@@ -6,14 +6,17 @@ document.getElementById("div-5").innerHTML = div4Content;
 document.getElementById("div-4").innerHTML = div5Content;
 
 /** Task 2 */
-const x = 4;
-const y = 6;
-const z = 3;
+function calculateSquare(event) {
+  event.stopPropagation();
+  const x = document.getElementById("triangle-a").value;
+  const y = document.getElementById("triangle-b").value;
+  const z = document.getElementById("triangle-c").value;
 
-const p = (x + y + z) / 2;
+  const p = (x + y + z) / 2;
 
-const s = Math.sqrt(p * (p - x) * (p - y) * (p - z));
-document.getElementById("div-3-end").innerHTML += s;
+  const s = Math.sqrt(p * (p - x) * (p - y) * (p - z));
+  document.getElementById("square").innerHTML = `Triangle square: ${s}`;
+}
 
 /** Task 3 */
 const cookie = getCookie("minResult");
@@ -22,8 +25,9 @@ if (cookie !== "") {
   deleteCookie("minResult");
 }
 
-function calculateMin() {
-  const inputContent = document.getElementById("div-3-input");
+function calculateMin(event) {
+  event.stopPropagation();
+  const inputContent = document.getElementById("min-input");
   const numbers = inputContent.value.split(" ");
   const min = Math.min(...numbers);
   let result = 0;
@@ -63,13 +67,9 @@ function deleteCookie(name) {
 }
 
 /** Task 4 */
-window.onload = (event) => {
-  const color = window.localStorage.getItem("color");
-  document.getElementById("div-3").style.color = color;
-};
-
-function setColor() {
-  const color = document.getElementById("div-3-color-input").value;
+function setColor(event) {
+  event.stopPropagation();
+  const color = document.getElementById("color-input").value;
   window.localStorage.setItem("color", color);
 }
 
@@ -81,10 +81,12 @@ function createList(event) {
     event.srcElement.appendChild(ul);
 
     const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
     saveButton.addEventListener("click", saveList);
     event.srcElement.appendChild(saveButton);
   }
   const li = document.createElement("li");
+  li.textContent = "item";
   ul[0].appendChild(li);
 }
 
@@ -92,10 +94,16 @@ function saveList(event) {
   event.stopPropagation();
   const id = event.srcElement.parentNode.id;
   const ul = event.srcElement.parentNode.getElementsByTagName("ul");
-  if (ul.length !== 0) window.localStorage.setItem(id, ul[0].children.length);
+  if (ul.length !== 0) {
+    window.localStorage.setItem(id, ul[0].children.length);
+  }
+  s;
 }
 
 window.onload = (event) => {
+  const color = window.localStorage.getItem("color");
+  document.getElementById("div-3").style.color = color;
+
   const div1ListLength = window.localStorage.getItem("div-1");
   if (div1ListLength !== null) {
     const ul1 = document.createElement("ul");

@@ -25,7 +25,7 @@ span {
   content: "";
   display: inline-block;
   vertical-align: middle;
-  height: 100%;
+  align-content: center;
   width: 0px;
 }
 .container {
