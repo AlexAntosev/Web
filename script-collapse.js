@@ -1,5 +1,3 @@
-const { json } = require("body-parser");
-
 function createCollapses(event) {
   event.stopPropagation();
 
