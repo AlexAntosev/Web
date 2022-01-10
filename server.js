@@ -17,7 +17,9 @@ const Pool = require("pg").Pool;
 
 const pool = new Pool({
   connectionString: "postgres://zegquqiacfirlx:d2c1923454278c4ff8ca9829f5ccb231c634ddef0c7cca35a830824eb911bedd@ec2-18-203-64-130.eu-west-1.compute.amazonaws.com:5432/den5hhgbgd7n85",
-  ssl: false
+  ssl: true,
+  password: "d2c1923454278c4ff8ca9829f5ccb231c634ddef0c7cca35a830824eb911bedd",
+  user: "zegquqiacfirlx",
 })
 
 const bodyParser = require("body-parser");
