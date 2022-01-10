@@ -1,17 +1,15 @@
+const baseUrl = "https://nodejs-webapp-antosiev.herokuapp.com";
+
 function post(event) {
   event.stopPropagation();
 
-  const numberOfCollapses = document.getElementById(
-    "collapse-number-input"
-  ).value;
-  const contentOfCollapses = document.getElementById(
-    "collapse-content-input"
-  ).value;
+  const count = document.getElementById("collapse-number-input").value;
+  const content = document.getElementById("collapse-content-input").value;
 
-  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses-post";
+  const url = `${baseUrl}/collapses-post`;
   const data = {
-    count: numberOfCollapses,
-    content: contentOfCollapses,
+    count,
+    content,
   };
   const params = {
     headers: {
@@ -26,17 +24,13 @@ function post(event) {
 function put(event) {
   event.stopPropagation();
 
-  const numberOfCollapses = document.getElementById(
-    "collapse-number-input"
-  ).value;
-  const contentOfCollapses = document.getElementById(
-    "collapse-content-input"
-  ).value;
+  const count = document.getElementById("collapse-number-input").value;
+  const content = document.getElementById("collapse-content-input").value;
 
-  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses-put";
+  const url = `${baseUrl}/collapses-put`;
   const data = {
-    count: numberOfCollapses,
-    content: contentOfCollapses,
+    count,
+    content,
   };
   const params = {
     headers: {
@@ -51,7 +45,7 @@ function put(event) {
 function get(event) {
   event.stopPropagation();
 
-  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses";
+  const url = `${baseUrl}/collapses`;
   fetch(url).then((res) => {
     res.json().then((j) => {
       document.getElementById("collapse-number-input").value = j.find(

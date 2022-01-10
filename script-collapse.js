@@ -1,15 +1,11 @@
 function createCollapses(event) {
   event.stopPropagation();
 
-  const numberOfCollapses = document.getElementById(
-    "collapse-number-input"
-  ).value;
-  const contentOfCollapses = document.getElementById(
-    "collapse-content-input"
-  ).value;
+  const count = document.getElementById("collapse-number-input").value;
+  const content = document.getElementById("collapse-content-input").value;
 
-  for (let index = 0; index < numberOfCollapses; index++) {
-    createCollapseForm(contentOfCollapses);
+  for (let index = 0; index < count; index++) {
+    createCollapseForm(content);
   }
 }
 
