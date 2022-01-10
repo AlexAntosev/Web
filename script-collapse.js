@@ -15,7 +15,32 @@ function createCollapses(event) {
   }
 }
 
-function save(event) {
+function post(event) {
+  event.stopPropagation();
+
+  const numberOfCollapses = document.getElementById(
+    "collapse-number-input"
+  ).value;
+  const contentOfCollapses = document.getElementById(
+    "collapse-content-input"
+  ).value;
+
+  const url = "http://localhost:3000/collapses-post";
+  const data = {
+    count: numberOfCollapses,
+    content: contentOfCollapses,
+  };
+  const params = {
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(data),
+    method: "POST",
+  };
+  fetch(url, params).then((res) => console.log(res));
+}
+
+function put(event) {
   event.stopPropagation();
 
   const numberOfCollapses = document.getElementById(
@@ -45,9 +70,13 @@ function get(event) {
 
   const url = "http://localhost:3000/collapses";
   fetch(url).then((res) => {
-    res.json().then(j => {
-      document.getElementById("collapse-number-input").value = j.find(i => i.id === 1).count;
-      document.getElementById("collapse-content-input").value = j.find(i => i.id === 1).content;
+    res.json().then((j) => {
+      document.getElementById("collapse-number-input").value = j.find(
+        (i) => i.id === 1
+      ).count;
+      document.getElementById("collapse-content-input").value = j.find(
+        (i) => i.id === 1
+      ).content;
     });
   });
 }
