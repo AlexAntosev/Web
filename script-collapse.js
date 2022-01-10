@@ -25,7 +25,7 @@ function post(event) {
     "collapse-content-input"
   ).value;
 
-  const url = "http://localhost:3000/collapses-post";
+  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses-post";
   const data = {
     count: numberOfCollapses,
     content: contentOfCollapses,
@@ -50,7 +50,7 @@ function put(event) {
     "collapse-content-input"
   ).value;
 
-  const url = "http://localhost:3000/collapses-put";
+  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses-put";
   const data = {
     count: numberOfCollapses,
     content: contentOfCollapses,
@@ -68,7 +68,7 @@ function put(event) {
 function get(event) {
   event.stopPropagation();
 
-  const url = "http://localhost:3000/collapses";
+  const url = "https://nodejs-webapp-antosiev.herokuapp.com/collapses";
   fetch(url).then((res) => {
     res.json().then((j) => {
       document.getElementById("collapse-number-input").value = j.find(
