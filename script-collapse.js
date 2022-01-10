@@ -1,3 +1,5 @@
+const { json } = require("body-parser");
+
 function createCollapses(event) {
   event.stopPropagation();
 
@@ -13,7 +15,9 @@ function createCollapses(event) {
   }
 }
 
-function save() {
+function save(event) {
+  event.stopPropagation();
+
   const numberOfCollapses = document.getElementById(
     "collapse-number-input"
   ).value;
@@ -21,7 +25,19 @@ function save() {
     "collapse-content-input"
   ).value;
 
-  
+  const url = "http://localhost:3000/collapses-post";
+  const data = {
+    count: numberOfCollapses,
+    content: contentOfCollapses
+  }
+  const params = {
+    headers:{
+      "content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify(data),
+    method: 'POST'
+  }
+  fetch(url, params).then(res => console.log(res));
 }
 
 function createCollapseForm(contentText) {

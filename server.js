@@ -8,7 +8,6 @@ const path = require("path");
    function exported by the express module.
 */
 const app = express();
-const router = express.Router();
 const Pool = require("pg").Pool;
 
 const pool = new Pool({
@@ -47,19 +46,20 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
 
+app.get("/second-page", function (req, res) {
+  res.sendFile(path.join(__dirname, "/second-page.html"));
+});
+
 app.get("/collapses", (req, res, next) => {
-  console.log("Collapses :");
   pool.query("Select * from collapses").then((testData) => {
-    console.log(testData);
     res.send(testData.rows);
   });
 });
 
 app.post("/collapses-post", (req, res, next) => {
-  console.log("Collapses :");
   pool.query(
-    "Insert into collapses(count, content) values (1, '{}')"
-  ).then(() => {});
+    `Insert into collapses(count, content) values (${req.body.count}, '{${req.body.content}}')`
+  ).then(() => res.send("success"));
 });
 
 // Require the Routes API
