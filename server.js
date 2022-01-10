@@ -62,6 +62,12 @@ app.post("/collapses-post", (req, res, next) => {
   ).then(() => res.send("success"));
 });
 
+app.put("/collapses-put", (req, res, next) => {
+  pool.query(
+    `Update collapses set count=${req.body.count}, content='{${req.body.content}}' where id = 1`
+  ).then(() => res.send("success"));
+});
+
 // Require the Routes API
 // Create a Server and run it on the port 3000
 const server = app.listen(3000, function () {

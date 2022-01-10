@@ -25,7 +25,7 @@ function save(event) {
     "collapse-content-input"
   ).value;
 
-  const url = "http://localhost:3000/collapses-post";
+  const url = "http://localhost:3000/collapses-put";
   const data = {
     count: numberOfCollapses,
     content: contentOfCollapses,
@@ -35,7 +35,7 @@ function save(event) {
       "content-type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(data),
-    method: "POST",
+    method: "PUT",
   };
   fetch(url, params).then((res) => console.log(res));
 }
@@ -46,8 +46,8 @@ function get(event) {
   const url = "http://localhost:3000/collapses";
   fetch(url).then((res) => {
     res.json().then(j => {
-      document.getElementById("collapse-number-input").value = j[0].count;
-      document.getElementById("collapse-content-input").value = j[0].content;
+      document.getElementById("collapse-number-input").value = j.find(i => i.id === 1).count;
+      document.getElementById("collapse-content-input").value = j.find(i => i.id === 1).content;
     });
   });
 }
