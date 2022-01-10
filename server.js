@@ -47,7 +47,7 @@ app.get("/collapses", (req, res, next) => {
 app.post("/collapses-post", (req, res, next) => {
   pool
     .query(
-      `Insert into collapses(count, content) values (${req.body.count}, '{${req.body.content}}')`
+      `Insert into collapses(count, content) values (${req.body.count}, '${req.body.content}')`
     )
     .then(() => res.send("success"));
 });
@@ -55,7 +55,7 @@ app.post("/collapses-post", (req, res, next) => {
 app.put("/collapses-put", (req, res, next) => {
   pool
     .query(
-      `Update collapses set count=${req.body.count}, content='{${req.body.content}}' where id = 1`
+      `Update collapses set count=${req.body.count}, content='${req.body.content}' where id = 1`
     )
     .then(() => res.send("success"));
 });
