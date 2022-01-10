@@ -28,16 +28,28 @@ function save(event) {
   const url = "http://localhost:3000/collapses-post";
   const data = {
     count: numberOfCollapses,
-    content: contentOfCollapses
-  }
+    content: contentOfCollapses,
+  };
   const params = {
-    headers:{
-      "content-type": "application/json; charset=UTF-8"
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(data),
-    method: 'POST'
-  }
-  fetch(url, params).then(res => console.log(res));
+    method: "POST",
+  };
+  fetch(url, params).then((res) => console.log(res));
+}
+
+function get(event) {
+  event.stopPropagation();
+
+  const url = "http://localhost:3000/collapses";
+  fetch(url).then((res) => {
+    res.json().then(j => {
+      document.getElementById("collapse-number-input").value = j[0].count;
+      document.getElementById("collapse-content-input").value = j[0].content;
+    });
+  });
 }
 
 function createCollapseForm(contentText) {
